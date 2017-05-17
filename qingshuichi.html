@@ -16,7 +16,7 @@
 <body>
     <div data-role="page" id="pageone">
         <div data-role="header" data-theme="b">
-            <h1>提升泵房一</h1>
+            <h1>清水池</h1>
         </div>
 
         <div data-role="main" class="ui-content">
@@ -45,7 +45,7 @@
             </ul>
             <h2>氯投加量</h2>
             <ul data-role="listview" data-inset="true">
-                <li data-icon="tag"><a href="#">氯投加量：<span class="ui-li-count" id="zoneAmount"></span></a></li>
+                <li data-icon="tag"><a href="#">氯投加量：<span class="ui-li-count" id="chlorineAmount"></span></a></li>
                 >
             </ul>
 
@@ -113,7 +113,7 @@
                 $('#codOut').html(data.codOut);
                 $('#tocOut').html(data.tocOut);
                 $('#flowOut').html(data.flowOut);
-                $('#zoneAmount').html(data.zoneAmount);
+                $('#chlorineAmount').html(data.chlorineAmount);
             },
             error: function () {
                 alert('服务器断开链接！');
