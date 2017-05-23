@@ -20,8 +20,8 @@
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="#jinshui" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline">历史数据（进水）</a>
-            <a href="#chushui" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline">历史数据（出水）</a>
+            <a href="zhuchouyangIn.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
+            <a href="zhuchouyangOut.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
             <h1>实时数据</h1>
             <h2>进水指标</h2>
             <ul data-role="listview" data-inset="true">
@@ -53,29 +53,13 @@
         </div>
 
         <div data-role="footer" data-position="fixed" data-fullscreen="true">
-            <div><a href="General.html" class="ui-btn ui-corner-all ui-mini ui-shadow">返回主界面</a></div>
+            <div><a href="General.html" class="ui-btn ui-corner-all ui-mini ui-shadow"onclick="reloadGetInwaterPage();"data-ajax="false">返回主界面</a></div>
         </div>
     </div>
-    <div data-role="page" data-rel="dialog" id="jinshui">
-        <div data-role="header" data-theme="b">
-            <h1>进水历史数据</h1>
-        </div>
-        <div id="showTBIn" legend="legend" item="axis" data="data" style="width: 100%;height: 92%;"></div>
-        <a href="#pageone">跳转到实时数据</a>
-    </div>
-    <div data-role="page" data-rel="dialog" id="chushui">
-        <div data-role="header" data-theme="b">
-            <h1>出水历史数据</h1>
-        </div>
-        <div id="showTBOut" legend="legend" item="axis" data="data" style="width: 100%;height: 92%;"></div>
-        <a href="#pageone">跳转到实时数据</a>
 </body>
 </html>
 <script type="text/javascript">
     $(function () {
-
-        getDataIn();
-        getDataOut();
         getData();
         setInterval("getData()", "10000");//每十秒执行一次
 
@@ -99,6 +83,116 @@
             },
             success: function (result) {
                 var data = result[0];
+
+                var phInMonitor = 0;
+                var waterTemperInMonitor = 0;
+                var turbidityInMonitor = 0;
+                var amlN2InMonitor = 0;
+                var codInMonitor = 0;
+                var tocInMonitor = 0;
+                var flowInMonitor = 0;
+                var phOutMonitor = 0;
+                var waterTemperOutMonitor = 0;
+                var turbidityOutMonitor = 0;
+                var amlN2OutMonitor = 0;
+                var codOutMonitor = 0;
+                var tocOutMonitor = 0;
+                var flowOutMonitor = 0;
+
+                if (data.phIn < 6 || data.phIn > 8) {
+                    phInMonitor = 1;
+                }
+                if (data.waterTemperIn < -10 || data.waterTemperIn > 30) {
+                    waterTemperInMonitor = 1;
+                }
+                if (data.turbidityIn < 0 || data.turbidityIn > 150) {
+                    turbidityInMonitor = 1;
+                }
+                if (data.amlN2In < 0 || data.amlN2In > 20) {
+                    amlN2InMonitor = 1;
+                }
+                if (data.codIn < 0 || data.codIn > 50) {
+                    codInMonitor = 1;
+                }
+                if (data.tocIn < 0 || data.tocIn > 30) {
+                    tocInMonitor = 1;
+                }
+                if (data.flowIn < 0 || data.flowIn > 4000) {
+                    flowInMonitor = 1;
+                }
+
+                if (data.phOut < 6 || data.phOut > 8) {
+                    phOutMonitor = 1;
+                }
+                if (data.waterTemperOut < -10 || data.waterTemperOut > 30) {
+                    waterTemperOutMonitor = 1;
+                }
+                if (data.turbidityOut < 0 || data.turbidityOut > 150) {
+                    turbidityOutMonitor = 1;
+                }
+                if (data.amlN2Out < 0 || data.amlN2Out > 20) {
+                    amlN2OutMonitor = 1;
+                }
+                if (data.codOut < 0 || data.codOut > 50) {
+                    codOutMonitor = 1;
+                }
+                if (data.tocOut < 0 || data.tocOut > 30) {
+                    tocOutMonitor = 1;
+                }
+                if (data.flowOut < 0 || data.flowOut > 4000) {
+                    flowOutMonitor = 1;
+                }
+
+                var InfMoniter = [];
+                if (phInMonitor == 1) {
+                    InfMoniter.push("进水PH值");
+                }
+                if (waterTemperInMonitor == 1) {
+                    InfMoniter.push("进水水温");
+                }
+                if (turbidityInMonitor == 1) {
+                    InfMoniter.push("进水浊度");
+                }
+                if (amlN2InMonitor == 1) {
+                    InfMoniter.push("进水氨氮");
+                }
+                if (codInMonitor == 1) {
+                    InfMoniter.push("进水COD");
+                }
+                if (tocInMonitor == 1) {
+                    InfMoniter.push("进水Toc");
+                }
+                if (flowInMonitor == 1) {
+                    InfMoniter.push("进水流量");
+                }
+
+
+                if (phOutMonitor == 1) {
+                    InfMoniter.push("出水PH值");
+                }
+                if (waterTemperOutMonitor == 1) {
+                    InfMoniter.push("出水水温");
+                }
+                if (turbidityOutMonitor == 1) {
+                    InfMoniter.push("出水浊度");
+                }
+                if (amlN2OutMonitor == 1) {
+                    InfMoniter.push("出水氨氮");
+                }
+                if (codOutMonitor == 1) {
+                    InfMoniter.push("出水COD");
+                }
+                if (tocOutMonitor == 1) {
+                    InfMoniter.push("出水Toc");
+                }
+                if (flowOutMonitor == 1) {
+                    InfMoniter.push("出水流量");
+                }
+
+                if (InfMoniter.length > 0) {
+                    alert("数据异常：" + InfMoniter);
+                }
+
                 $('#phIn').html(data.phIn);
                 $('#waterTemperIn').html(data.waterTemperIn);
                 $("#turbidityIn").html(data.turbidityIn);
@@ -122,223 +216,6 @@
         })
     }
 
-    function getDataIn() {
-
-        var token_type = sessionStorage.getItem("token_type");
-        var access_token = sessionStorage.getItem("access_token");
-        $.ajax({
-            url: serviceUrl + '/api/pumpRoomFirst',
-            dataType: 'JSON',
-            type: 'GET',
-            data: {
-                limit: 24,
-                sort: '-createTime'
-
-            },
-            beforeSend: function (request) {
-                request.setRequestHeader("Authorization", token_type + ' ' + access_token);
-            },
-            success: function (data) {
-                var phIn = [];
-                var waterTemperIn = [];
-                var turbidityIn = [];
-                var amlN2In = [];
-                var codIn = [];
-                var tocIn = [];
-                var flowIn = [];
-                for (var i = 0; i < data.length; i++) {
-                    phIn.push(data[i].phIn);
-                    waterTemperIn.push(data[i].waterTemperIn);
-                    turbidityIn.push(data[i].turbidityIn);
-                    amlN2In.push(data[i].amlN2In);
-                    codIn.push(data[i].codIn);
-                    tocIn.push(data[i].tocIn);
-                    flowIn.push(data[i].flowIn / 100);
-                }
-                var title = ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量'];
-                var content = [];
-                content.push(phIn);
-                content.push(waterTemperIn);
-                content.push(turbidityIn);
-                content.push(amlN2In);
-                content.push(codIn);
-                content.push(tocIn);
-                content.push(flowIn);
-                var outerArray = [];
-                for (var j = 0; j < title.length; j++) {
-                    var innerArray = {};
-                    innerArray.name = title[j];
-                    innerArray.type = "line";
-                    innerArray.stack = "总量";
-                    innerArray.areaStyle = {normal: {}};
-                    innerArray.data = content[j];
-                    outerArray.push(innerArray);
-                }
-                console.log(outerArray);
-                getEcharsIn(outerArray);
-            },
-            error: function () {
-                alert('服务器断开链接！');
-                return false;
-            }
-        })
-    }
-
-    function getEcharsIn(data) {
-        var echart_bz = echarts.init(document.getElementById('showTBIn'));
-        option = {
-            title: {
-                text: '堆叠区域图',
-                show: false
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            legend: {
-                data: ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量']
-            },
-            toolbox: {
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [
-                {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00']
-                }
-            ],
-            yAxis: [
-                {
-                    type: 'value'
-                }
-            ],
-            series: data
-        };
-        echart_bz.setOption(option);
-    }
-
-    function getDataOut() {
-        
-        var token_type = sessionStorage.getItem("token_type");
-        var access_token = sessionStorage.getItem("access_token");
-        $.ajax({
-            url: serviceUrl + '/api/pumpRoomFirst',
-            dataType: 'JSON',
-            type: 'GET',
-            data: {
-                limit: 24,
-                sort: '-createTime'
-
-            },
-            beforeSend: function (request) {
-                request.setRequestHeader("Authorization", token_type + ' ' + access_token);
-            },
-            success: function (data) {
-                var phOut = [];
-                var waterTemperOut = [];
-                var turbidityOut = [];
-                var amlN2Out = [];
-                var codOut = [];
-                var tocOut = [];
-                var flowOut = [];
-                for (var i = 0; i < data.length; i++) {
-                    phOut.push(data[i].phOut);
-                    waterTemperOut.push(data[i].waterTemperOut);
-                    turbidityOut.push(data[i].turbidityOut);
-                    amlN2Out.push(data[i].amlN2Out);
-                    codOut.push(data[i].codOut);
-                    tocOut.push(data[i].tocOut);
-                    flowOut.push(data[i].flowOut / 100);
-                }
-                var title = ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量'];
-                var content = [];
-                content.push(phOut);
-                content.push(waterTemperOut);
-                content.push(turbidityOut);
-                content.push(amlN2Out);
-                content.push(codOut);
-                content.push(tocOut);
-                content.push(flowOut);
-                var outerArray = [];
-                for (var j = 0; j < title.length; j++) {
-                    var innerArray = {};
-                    innerArray.name = title[j];
-                    innerArray.type = "line";
-                    innerArray.stack = "总量";
-                    innerArray.areaStyle = { normal: {} };
-                    innerArray.data = content[j];
-                    outerArray.push(innerArray);
-                }
-                console.log(outerArray);
-                getEcharsOut(outerArray);
-            },
-            error: function () {
-                alert('服务器断开链接！');
-                return false;
-            }
-        })
-    }
-
-    function getEcharsOut(data) {
-        var echart_bz = echarts.init(document.getElementById('showTBOut'));
-        option = {
-            title: {
-                text: '堆叠区域图',
-                show: false
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            legend: {
-                data: ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量']
-            },
-            toolbox: {
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [
-                {
-                    type: 'category',
-                    boundaryGap: false,
-                    data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00']
-                }
-            ],
-            yAxis: [
-                {
-                    type: 'value'
-                }
-            ],
-            series: data
-        };
-        echart_bz.setOption(option);
-    }
 
     function reloadGetInwaterPage(){
         setTimeout("doThisReload()",100);
