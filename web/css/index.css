@@ -1,0 +1,35 @@
+.loginBox{
+	width: 15%;
+	margin: 30px auto;
+}
+.login_name{
+	width: 100%;
+	padding-top: 30px;
+	color: black;
+	overflow: hidden;
+}
+
+.login_name span{
+	width: 30%;
+	float: left;
+	text-align:left;
+	display: block;
+}
+
+.login_name input{
+	width:70%;
+	padding-left: 10px;
+	display: block;
+	float: right;
+}
+
+.loginBox button{
+	width: 100%;
+	margin-top: 20px;
+	background: #5970a6;
+	text-align: center;
+	height: 2rem;
+	line-height: 2rem;
+	display: block;
+	color: white;
+}

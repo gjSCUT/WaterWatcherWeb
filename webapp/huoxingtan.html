@@ -16,42 +16,41 @@
 <body>
     <div data-role="page" id="pageone">
         <div data-role="header" data-theme="b">
-            <h1>配水井</h1>
+            <h1>活性炭滤池</h1>
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="peishuijingIn.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
-            <a href="peishuijingOut.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
+            <a href="huoxingtanIn.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
+            <a href="huoxingtanOut.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
             <h1>实时数据</h1>
             <h2>进水指标</h2>
             <ul data-role="listview" data-inset="true">
-                <li data-icon="tag"><a href="#">PH值：（无量纲）<span class="ui-li-count" id="phIn">6</span></a></li>
-                <li data-icon="tag"><a href="#">水温：（oC）<span class="ui-li-count" id="waterTemperIn">15</span></a></li>
-                <li data-icon="tag"><a href="#">浊度：（NTU）<span class="ui-li-count" id="turbidityIn">100</span></a></li>
-                <li data-icon="tag"><a href="#">氨氮：（mg/L）<span class="ui-li-count" id="amlN2In">15</span></a></li>
-                <li data-icon="tag"><a href="#">CODMn：（mg/L）<span class="ui-li-count" id="codIn">20</span></a></li>
-                <li data-icon="tag"><a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocIn">28</span></a></li>
-                <li data-icon="tag"><a href="#">进水流量：（m3/h）<span class="ui-li-count" id="flowIn">10011</span></a></li>
+                <li data-icon="tag"><a href="#">PH值：（无量纲）<span class="ui-li-count" id="phIn"></span></a></li>
+                <li data-icon="tag"><a href="#">水温：（oC）<span class="ui-li-count" id="waterTemperIn"></span></a></li>
+                <li data-icon="tag"><a href="#">浊度：（NTU）<span class="ui-li-count" id="turbidityIn"></span></a></li>
+                <li data-icon="tag"><a href="#">氨氮：（mg/L）<span class="ui-li-count" id="amlN2In"></span></a></li>
+                <li data-icon="tag"><a href="#">CODMn：（mg/L）<span class="ui-li-count" id="codIn"></span></a></li>
+                <li data-icon="tag"><a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocIn"></span></a></li>
+                <li data-icon="tag"><a href="#">进水流量：（m3/h）<span class="ui-li-count" id="flowIn"></span></a></li>
             </ul>
             <h2>出水指标</h2>
             <ul data-role="listview" data-inset="true">
-                <li data-icon="tag"><a href="#">PH值：（无量纲）<span class="ui-li-count" id="phOut">6</span></a></li>
-                <li data-icon="tag"><a href="#">水温：（oC）<span class="ui-li-count" id="waterTemperOut">15</span></a></li>
-                <li data-icon="tag"><a href="#">浊度：（NTU）<span class="ui-li-count" id="turbidityOut">100</span></a></li>
-                <li data-icon="tag"><a href="#">氨氮：（mg/L）<span class="ui-li-count" id="amlN2Out">15</span></a></li>
-                <li data-icon="tag"><a href="#">CODMn：（mg/L）<span class="ui-li-count" id="codOut">20</span></a></li>
-                <li data-icon="tag"><a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocOut">28</span></a></li>
-                <li data-icon="tag"><a href="#">出水流量：（m3/h）<span class="ui-li-count" id="flowOut">10000</span></a></li>
+                <li data-icon="tag"><a href="#">PH值：（无量纲）<span class="ui-li-count" id="phOut"></span></a></li>
+                <li data-icon="tag"><a href="#">水温：（oC）<span class="ui-li-count" id="waterTemperOut"></span></a></li>
+                <li data-icon="tag"><a href="#">浊度：（NTU）<span class="ui-li-count" id="turbidityOut"></span></a></li>
+                <li data-icon="tag"><a href="#">氨氮：（mg/L）<span class="ui-li-count" id="amlN2Out"></span></a></li>
+                <li data-icon="tag"><a href="#">CODMn：（mg/L）<span class="ui-li-count" id="codOut"></span></a></li>
+                <li data-icon="tag"><a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocOut"></span></a></li>
+                <li data-icon="tag"><a href="#">出水流量：（m3/h）<span class="ui-li-count" id="flowOut"></span></a></li>
             </ul>
-           
+
         </div>
 
         <div data-role="footer" data-position="fixed" data-fullscreen="true">
             <div><a href="General.html" class="ui-btn ui-corner-all ui-mini ui-shadow"onclick="reloadGetInwaterPage();"data-ajax="false">返回主界面</a></div>
         </div>
     </div>
-   
-</body>  
+</body>
 </html>
 <script type="text/javascript">
     $(function () {
@@ -65,7 +64,7 @@
         var token_type = sessionStorage.getItem("token_type");
         var access_token = sessionStorage.getItem("access_token");
         $.ajax({
-            url: serviceUrl + '/api/depositPool',
+            url: serviceUrl + '/api/activatedCarbonPool',
             dataType: 'json',
             type: 'GET',
             data: {
@@ -209,14 +208,13 @@
             }
         })
     }
-    function reloadGetInwaterPage() {
-        setTimeout("doThisReload()", 100);
+
+
+    function reloadGetInwaterPage(){
+        setTimeout("doThisReload()",100);
     }
-    function doThisReload() {
+    function doThisReload(){
         location.reload();
     }
 </script>
-
-
-
 

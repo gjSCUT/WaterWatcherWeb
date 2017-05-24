@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>hunningchi</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/head.css" />
+    <link rel="stylesheet" type="text/css" href="css/index1.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/top.css" />
+    <script src="src/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+    <script src="src/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="js/echarts.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="head">
+        <img src="img/1-01.jpg" />
+    </div>
+    <div>
+        <h4 class="top_1" id="user">用户名：</h4>
+        <h4 class="top_2" onclick="doLogout()">>注销登录</h4>
+        <h4 class="top_3">>帮助中心</h4>
+
+    </div>
+    <ul class="navBox">
+        <li>
+            <a href="firstPage.html">首页</a>
+        </li>
+
+        <li>
+            <a href="liuchengtu.html">工艺流程图</a>
+        </li>
+
+        <li>
+            <a href="secondPage.html">水质数据显示</a>
+        </li>
+
+        <li>
+            <a href="thirdPage.html">水质标准指标公示</a>
+        </li>
+        <li>值班人员信息</li>
+        <li>联系我们</li>
+    </ul>
+    <div class="mainBox">
+        <div class="mainLeft">
+            <ul class="list">
+                <li>
+                    <a href="tishengbengfang1.html">提升泵房1</a>
+                </li>
+                <li>
+                    <a href="peishuijing.html">配水井</a>
+                </li>
+                <li>
+                    <a href="yuchouyang.html">预臭氧接触池</a>
+                </li>
+                <li>
+                    <a href="hunningchi.html">混凝池</a>
+                </li>
+                <li>
+                    <a href="chendianchi.html">沉淀池</a>
+                </li>
+                <li>
+                    <a href="shalvchi.html">砂滤池</a>
+                </li>
+                <li>
+                    <a href="jiehejing.html">结合井</a>
+                </li>
+                <li>
+                    <a href="tishengbengfang2.html">提升泵房2</a>
+                </li>
+                <li>
+                    <a href="zhuchouyang.html">主臭氧接触池</a>
+                </li>
+                <li>
+                    <a href="huoxingtan.html">生物活性炭池</a>
+                </li>
+                <li>
+                    <a href="qingshuichi.html">清水池</a>
+                </li>
+                <li>
+                    <a href="xishuijing.html">吸水井</a>
+                </li>
+                <li>
+                    <a href="bengfang2.html">二泵房</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mainRight">
+            <ul class="btBox">
+                <li>历史数据(进水)</li>
+                <li>历史数据(出水)</li>
+            </ul>
+            <div class="contentBox">
+                <div id="main1" class="main" style="width: 800px;height:600px;"></div>
+                <div id="main2" class="main" style="width: 800px;height:600px;"></div>
+                <div class="content">
+                    <h3>进水指标</h3>
+                    <ul data-role="listview" data-inset="true">
+                        <li data-icon="tag">
+                            <a href="#">PH值：（无量纲）<span class="ui-li-count" id="phIn"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">水温：（oC）<span class="ui-li-count" id="waterTemperIn"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">浊度：（NTU）<span class="ui-li-count" id="turbidityIn"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">氨氮：（mg/L）<span class="ui-li-count" id="amlN2In"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">CODMn：（mg/L）<span class="ui-li-count" id="codIn"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocIn"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">进水流量：（m3/h）<span class="ui-li-count" id="flowIn"></span></a>
+                        </li>
+                    </ul>
+                    <h3>出水指标</h3>
+                    <ul data-role="listview" data-inset="true">
+                        <li data-icon="tag">
+                            <a href="#">PH值：（无量纲）<span class="ui-li-count" id="phOut"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">水温：（oC）<span class="ui-li-count" id="waterTemperOut"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">浊度：（NTU）<span class="ui-li-count" id="turbidityOut"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">氨氮：（mg/L）<span class="ui-li-count" id="amlN2Out"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">CODMn：（mg/L）<span class="ui-li-count" id="codOut"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocOut"></span></a>
+                        </li>
+                        <li data-icon="tag">
+                            <a href="#">出水流量：（m3/h）<span class="ui-li-count" id="flowOut"></span></a>
+                        </li>
+                    </ul>
+                    <h3>矾投加量</h3>
+                    <ul data-role="listview" data-inset="true">
+                        <li data-icon="tag">
+                            <a href="#">投加量：（mg/L）<span class="ui-li-count" id="alumAmount"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="time">
+        <script>
+
+            document.getElementById('time').innerHTML = new Date().toLocaleString();
+            setInterval("document.getElementById('time').innerHTML=new Date().toLocaleString();", 1000);
+        </script>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+            var username = sessionStorage.getItem("username");
+            $('#user').append(username);
+            $(function () {
+
+                getDataIn();
+                getDataOut();
+                getData();
+                setInterval("getData()", "10000");//每十秒执行一次
+
+            });
+            var serviceUrl = 'http://120.24.252.123:3000';
+            function getData() {
+
+                var token_type = sessionStorage.getItem("token_type");
+                var access_token = sessionStorage.getItem("access_token");
+                $.ajax({
+                    url: serviceUrl + '/api/coagulatePool',
+                    dataType: 'json',
+                    type: 'GET',
+                    data: {
+                        limit: 1,
+                        sort: '-createTime'
+
+                    },
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token_type + ' ' + access_token);
+                    },
+                    success: function (result) {
+                        var data = result[0];
+                        var phInMonitor = 0;
+                        var waterTemperInMonitor = 0;
+                        var turbidityInMonitor = 0;
+                        var amlN2InMonitor = 0;
+                        var codInMonitor = 0;
+                        var tocInMonitor = 0;
+                        var flowInMonitor = 0;
+                        var phOutMonitor = 0;
+                        var waterTemperOutMonitor = 0;
+                        var turbidityOutMonitor = 0;
+                        var amlN2OutMonitor = 0;
+                        var codOutMonitor = 0;
+                        var tocOutMonitor = 0;
+                        var flowOutMonitor = 0;
+
+                        if (data.phIn < 6 || data.phIn > 8) {
+                            phInMonitor = 1;
+                        }
+                        if (data.waterTemperIn < -10 || data.waterTemperIn > 30) {
+                            waterTemperInMonitor = 1;
+                        }
+                        if (data.turbidityIn < 0 || data.turbidityIn > 150) {
+                            turbidityInMonitor = 1;
+                        }
+                        if (data.amlN2In < 0 || data.amlN2In > 20) {
+                            amlN2InMonitor = 1;
+                        }
+                        if (data.codIn < 0 || data.codIn > 50) {
+                            codInMonitor = 1;
+                        }
+                        if (data.tocIn < 0 || data.tocIn > 30) {
+                            tocInMonitor = 1;
+                        }
+                        if (data.flowIn < 0 || data.flowIn > 4000) {
+                            flowInMonitor = 1;
+                        }
+
+                        if (data.phOut < 6 || data.phOut > 8) {
+                            phOutMonitor = 1;
+                        }
+                        if (data.waterTemperOut < -10 || data.waterTemperOut > 30) {
+                            waterTemperOutMonitor = 1;
+                        }
+                        if (data.turbidityOut < 0 || data.turbidityOut > 150) {
+                            turbidityOutMonitor = 1;
+                        }
+                        if (data.amlN2Out < 0 || data.amlN2Out > 20) {
+                            amlN2OutMonitor = 1;
+                        }
+                        if (data.codOut < 0 || data.codOut > 50) {
+                            codOutMonitor = 1;
+                        }
+                        if (data.tocOut < 0 || data.tocOut > 30) {
+                            tocOutMonitor = 1;
+                        }
+                        if (data.flowOut < 0 || data.flowOut > 4000) {
+                            flowOutMonitor = 1;
+                        }
+
+                        var InfMoniter = [];
+                        if (phInMonitor == 1) {
+                            InfMoniter.push("进水PH值");
+                        }
+                        if (waterTemperInMonitor == 1) {
+                            InfMoniter.push("进水水温");
+                        }
+                        if (turbidityInMonitor == 1) {
+                            InfMoniter.push("进水浊度");
+                        }
+                        if (amlN2InMonitor == 1) {
+                            InfMoniter.push("进水氨氮");
+                        }
+                        if (codInMonitor == 1) {
+                            InfMoniter.push("进水COD");
+                        }
+                        if (tocInMonitor == 1) {
+                            InfMoniter.push("进水Toc");
+                        }
+                        if (flowInMonitor == 1) {
+                            InfMoniter.push("进水流量");
+                        }
+
+
+                        if (phOutMonitor == 1) {
+                            InfMoniter.push("出水PH值");
+                        }
+                        if (waterTemperOutMonitor == 1) {
+                            InfMoniter.push("出水水温");
+                        }
+                        if (turbidityOutMonitor == 1) {
+                            InfMoniter.push("出水浊度");
+                        }
+                        if (amlN2OutMonitor == 1) {
+                            InfMoniter.push("出水氨氮");
+                        }
+                        if (codOutMonitor == 1) {
+                            InfMoniter.push("出水COD");
+                        }
+                        if (tocOutMonitor == 1) {
+                            InfMoniter.push("出水Toc");
+                        }
+                        if (flowOutMonitor == 1) {
+                            InfMoniter.push("出水流量");
+                        }
+
+                        if (InfMoniter.length > 0) {
+                            alert("数据异常：" + InfMoniter);
+                        }
+                        $('#phIn').html(data.phIn);
+                        $('#waterTemperIn').html(data.waterTemperIn);
+                        $("#turbidityIn").html(data.turbidityIn);
+                        $("#amlN2In").html(data.amlN2In);
+                        $("#codIn").html(data.codIn);
+                        $("#tocIn").html(data.tocIn);
+                        $('#flowIn').html(data.flowIn);
+                        $('#phOut').html(data.phOut);
+                        $('#waterTemperOut').html(data.waterTemperOut);
+                        $('#turbidityOut').html(data.turbidityOut);
+                        $('#amlN2Out').html(data.amlN2Out);
+                        $('#codOut').html(data.codOut);
+                        $('#tocOut').html(data.tocOut);
+                        $('#flowOut').html(data.flowOut);
+                        $('#alumAmount').html(data.alumAmount);
+                    },
+                    error: function () {
+                        alert('服务器断开链接！');
+                        return false;
+                    }
+                })
+            }
+
+            function getDataIn() {
+
+                var token_type = sessionStorage.getItem("token_type");
+                var access_token = sessionStorage.getItem("access_token");
+                $.ajax({
+                    url: serviceUrl + '/api/pumpRoomFirst',
+                    dataType: 'JSON',
+                    type: 'GET',
+                    data: {
+                        limit: 24,
+                        sort: '-createTime'
+
+                    },
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token_type + ' ' + access_token);
+                    },
+                    success: function (data) {
+                        var phIn = [];
+                        var waterTemperIn = [];
+                        var turbidityIn = [];
+                        var amlN2In = [];
+                        var codIn = [];
+                        var tocIn = [];
+                        var flowIn = [];
+                        for (var i = 0; i < data.length; i++) {
+                            phIn.push(data[i].phIn);
+                            waterTemperIn.push(data[i].waterTemperIn);
+                            turbidityIn.push(data[i].turbidityIn);
+                            amlN2In.push(data[i].amlN2In);
+                            codIn.push(data[i].codIn);
+                            tocIn.push(data[i].tocIn);
+                            flowIn.push(data[i].flowIn / 100);
+                        }
+                        var title = ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量'];
+                        var content = [];
+                        content.push(phIn);
+                        content.push(waterTemperIn);
+                        content.push(turbidityIn);
+                        content.push(amlN2In);
+                        content.push(codIn);
+                        content.push(tocIn);
+                        content.push(flowIn);
+                        var outerArray = [];
+                        for (var j = 0; j < title.length; j++) {
+                            var innerArray = {};
+                            innerArray.name = title[j];
+                            innerArray.type = "line";
+                            innerArray.stack = "总量";
+                            innerArray.data = content[j];
+                            outerArray.push(innerArray);
+                        }
+                        console.log(outerArray);
+                        getEcharsIn(outerArray);
+                    },
+                    error: function () {
+                        alert('服务器断开链接！');
+                        return false;
+                    }
+                })
+            }
+            $(".btBox li").eq(0).click(function () {
+                $(".main").hide();
+                $("#main1").show();
+                $(".content").hide();
+            })
+            function getEcharsIn(data) {
+                var echart_bz = echarts.init(document.getElementById('main1'));
+                option = {
+                    title: {
+                        text: '数据',
+                     
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                     
+                    },
+                    legend: {
+                        data: ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量']
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00']
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: data
+                };
+                echart_bz.setOption(option);
+            }
+            $(".btBox li").eq(1).click(function () {
+                $(".main").hide();
+                $("#main2").show();
+                $(".content").hide();
+            })
+            function getDataOut() {
+
+                var token_type = sessionStorage.getItem("token_type");
+                var access_token = sessionStorage.getItem("access_token");
+                $.ajax({
+                    url: serviceUrl + '/api/pumpRoomFirst',
+                    dataType: 'JSON',
+                    type: 'GET',
+                    data: {
+                        limit: 24,
+                        sort: '-createTime'
+
+                    },
+                    beforeSend: function (request) {
+                        request.setRequestHeader("Authorization", token_type + ' ' + access_token);
+                    },
+                    success: function (data) {
+                        var phOut = [];
+                        var waterTemperOut = [];
+                        var turbidityOut = [];
+                        var amlN2Out = [];
+                        var codOut = [];
+                        var tocOut = [];
+                        var flowOut = [];
+                        for (var i = 0; i < data.length; i++) {
+                            phOut.push(data[i].phOut);
+                            waterTemperOut.push(data[i].waterTemperOut);
+                            turbidityOut.push(data[i].turbidityOut);
+                            amlN2Out.push(data[i].amlN2Out);
+                            codOut.push(data[i].codOut);
+                            tocOut.push(data[i].tocOut);
+                            flowOut.push(data[i].flowOut / 100);
+                        }
+                        var title = ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量'];
+                        var content = [];
+                        content.push(phOut);
+                        content.push(waterTemperOut);
+                        content.push(turbidityOut);
+                        content.push(amlN2Out);
+                        content.push(codOut);
+                        content.push(tocOut);
+                        content.push(flowOut);
+                        var outerArray = [];
+                        for (var j = 0; j < title.length; j++) {
+                            var innerArray = {};
+                            innerArray.name = title[j];
+                            innerArray.type = "line";
+                            innerArray.stack = "总量";
+                            innerArray.data = content[j];
+                            outerArray.push(innerArray);
+                        }
+                        console.log(outerArray);
+                        getEcharsOut(outerArray);
+                    },
+                    error: function () {
+                        alert('服务器断开链接！');
+                        return false;
+                    }
+                })
+            }
+
+            function getEcharsOut(data) {
+                var echart_bz = echarts.init(document.getElementById('main2'));
+                option = {
+                    title: {
+                        text: '数据',
+                    
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                      
+                    },
+                    legend: {
+                        data: ['PH值', '水温', '浊度', '氨氮', 'CODMn', 'TOC', '进水流量']
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '24:00']
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value'
+                        }
+                    ],
+                    series: data
+                };
+                echart_bz.setOption(option);
+            }
+
+            function reloadGetInwaterPage() {
+                setTimeout("doThisReload()", 100);
+            }
+            function doThisReload() {
+                location.reload();
+            }
+            function doLogout() {
+                $.ajax({
+                    url: serviceUrl + '/logout',
+                    dataType: 'JSON',
+                    type: 'GET',
+                    success: function (data) {
+                        if (data == 'logout success') {
+                            alert('注销成功！');
+                            window.location.href = 'login.html';
+                        }
+                    },
+                    error: function () {
+                        window.location.href = 'firstPage.html';
+                    }
+                })
+            }
+</script>

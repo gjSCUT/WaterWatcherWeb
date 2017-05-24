@@ -1,0 +1,105 @@
+.mainBox {
+	overflow: hidden;
+	width: 1200px;
+	background: -webkit-linear-gradient(#b8c5e7, white);
+	margin: 30px auto;
+}
+
+.mainLeft {
+	width: 200px;
+	float: left;
+	background: #fff;
+	text-align: left;
+	margin-left: 50px;
+	margin-top: 20px;
+}
+
+.mainLeft ul {
+	width: 150px;
+	margin-left: 30px;
+	margin-top: 20px;
+}
+
+.mainLeft ul li {
+	font-size: 1.2rem;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px dotted #7d90bb;
+	color: #7d90bb;
+}
+
+.mainLeft ul li:hover {
+	cursor: pointer;
+	color: red;
+}
+
+.mainRight {
+	width: 850px;
+	float: left;
+	margin-left: 50px;
+	background: #fff;
+	margin-top: 20px;
+}
+
+.btBox {
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 300px;
+	overflow: hidden;
+}
+
+.btBox li {
+	width: 125px;
+	text-align: center;
+	float: left;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	text-align: center;
+	background: #6e85c0;
+	border-radius: 3px;
+	color: white;
+}
+
+.btBox li:nth-child(2) {
+	margin-left: 50px;
+}
+
+.contentBox {
+	width: 800px;
+	margin-left: 20px;
+}
+
+.contentBox .content {
+	margin: 30px auto;
+	width: 100%;
+}
+
+.contentBox .content h2 {
+	width: 100%;
+	background: -webkit-linear-gradient(360deg, #6e85c0, white);
+	height: 1.8rem;
+	line-height: 1.8rem;
+	font-size: 0.8rem;
+	color: white;
+	padding-left: 20px;
+}
+
+.contentBox .content ul li a {
+	margin-left: 20px;
+	line-height: 2rem;
+}
+
+.contentBox .content ul li a span {
+	padding: 0 20px;
+	float: right;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	line-height: 1.6rem;
+	margin-top: 0.2rem;
+	margin-right: 20px;
+}
+
+.main {
+	margin-top: 30px;
+	display: none;
+}

@@ -16,12 +16,12 @@
 <body>
     <div data-role="page" id="pageone">
         <div data-role="header" data-theme="b">
-            <h1>砂滤池</h1>
+            <h1>吸水井</h1>
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="shalvIn.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
-            <a href="shalvOut.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
+            <a href="xishuijingIn.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
+            <a href="xishuijingOut.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
             <h1>实时数据</h1>
             <h2>进水指标</h2>
             <ul data-role="listview" data-inset="true">
@@ -64,7 +64,7 @@
         var token_type = sessionStorage.getItem("token_type");
         var access_token = sessionStorage.getItem("access_token");
         $.ajax({
-            url: serviceUrl + '/api/sandLeachPool',
+            url: serviceUrl + '/api/suctionWell',
             dataType: 'json',
             type: 'GET',
             data: {

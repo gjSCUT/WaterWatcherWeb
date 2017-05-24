@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>login</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/head.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script src="src/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="src/js/jquery-1.10.2.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="head">
+			<img src="img/1-01.jpg" />
+		</div>
+		<div class="loginBox">
+			<div class="login_name"><span>用户名：</span><input type="text" name="login_usr" id="login_usr" placeholder="用户名"/></div>
+			<div class="login_name"><span>密&ensp;&ensp;码：</span><input type="password" name="login_pw" id="login_pw" placeholder="密码"/></div>
+			<button class="login" onclick="doLogin();">登&ensp;&ensp;&ensp;&ensp;录</button>
+			<button class="regist" onclick="location.href='regist.html'">注&ensp;&ensp;&ensp;&ensp;册</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+    var serviceUrl = 'http://120.24.252.123:3000';
+    function doLogin() {
+        var username = $('input[name=login_usr]').val();
+        var password = $('input[name=login_pw]').val();
+        if (!loginvalidate(username, password)) {
+            return false;
+        }
+        $.ajax({
+            url: serviceUrl + '/login',
+            dataType: 'JSON',
+            type: 'POST',
+            data: {
+                username: username,
+                password: password
+            },
+            success: function (data) {
+                if (data == 'login success') {
+                    alert('登录成功！');
+                    sessionStorage.setItem("username", username);
+                    window.location.href = 'firstPage.html';
+
+                }
+            },
+            error: function () {
+                alert('用户名或密码错误！');
+                return false;
+            }
+        })
+    }
+    function loginvalidate(username, password) {
+        var flag = true;
+        if (username == '') {
+            alert("请输入用户名！");
+            flag = false;
+        } else if (password == '') {
+            alert("请输入密码！");
+            flag = false;
+        }
+        return flag;
+    }
+   
+</script>

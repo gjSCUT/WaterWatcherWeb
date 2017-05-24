@@ -16,12 +16,12 @@
 <body>
     <div data-role="page" id="pageone">
         <div data-role="header" data-theme="b">
-            <h1>结合井</h1>
+            <h1>提升泵房二</h1>
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="jiehejingIn.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
-            <a href="jiehejingOut.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
+            <a href="tishengbengfang2In.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
+            <a href="tishengbengfang2Out.html" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
             <h1>实时数据</h1>
             <h2>进水指标</h2>
             <ul data-role="listview" data-inset="true">
@@ -43,7 +43,42 @@
                 <li data-icon="tag"><a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocOut"></span></a></li>
                 <li data-icon="tag"><a href="#">出水流量：（m3/h）<span class="ui-li-count" id="flowOut"></span></a></li>
             </ul>
-
+            <h2>1#变频泵</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="tag"><a href="#">频率：（HZ）<span class="ui-li-count" id="bp1_pv"></span></a></li>
+                <li data-icon="tag"><a href="#">扬程：（m）<span class="ui-li-count" id="bp1_yc"></span></a></li>
+                <li data-icon="tag"><a href="#">流量：（m3/h）<span class="ui-li-count" id="bp1_ll"></span></a></li>
+            </ul>
+            <h2>2#变频泵</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="tag"><a href="#">频率：（HZ）<span class="ui-li-count" id="bp2_pv"></span></a></li>
+                <li data-icon="tag"><a href="#">扬程：（m）<span class="ui-li-count" id="bp2_yc"></span></a></li>
+                <li data-icon="tag"><a href="#">流量：（m3/h）<span class="ui-li-count" id="bp2_ll"></span></a></li>
+            </ul>
+            <h2>3#变频泵</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="tag"><a href="#">频率：（HZ）<span class="ui-li-count" id="bp3_pv"></span></a></li>
+                <li data-icon="tag"><a href="#">扬程：（m）<span class="ui-li-count" id="bp3_yc"></span></a></li>
+                <li data-icon="tag"><a href="#">流量：（m3/h）<span class="ui-li-count" id="bp3_ll"></span></a></li>
+            </ul>
+            <h2>4#变频泵</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="tag"><a href="#">频率：（HZ）<span class="ui-li-count" id="bp4_pv"></span></a></li>
+                <li data-icon="tag"><a href="#">扬程：（m）<span class="ui-li-count" id="bp4_yc"></span></a></li>
+                <li data-icon="tag"><a href="#">流量：（m3/h）<span class="ui-li-count" id="bp4_ll"></span></a></li>
+            </ul>
+            <h2>5#变频泵</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="tag"><a href="#">频率：（HZ）<span class="ui-li-count" id="bp5_pv"></span></a></li>
+                <li data-icon="tag"><a href="#">扬程：（m）<span class="ui-li-count" id="bp5_yc"></span></a></li>
+                <li data-icon="tag"><a href="#">流量：（m3/h）<span class="ui-li-count" id="bp5_ll"></span></a></li>
+            </ul>
+            <h2>6#变频泵</h2>
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="tag"><a href="#">频率：（HZ）<span class="ui-li-count" id="bp6_pv"></span></a></li>
+                <li data-icon="tag"><a href="#">扬程：（m）<span class="ui-li-count" id="bp6_yc"></span></a></li>
+                <li data-icon="tag"><a href="#">流量：（m3/h）<span class="ui-li-count" id="bp6_ll"></span></a></li>
+            </ul>
         </div>
 
         <div data-role="footer" data-position="fixed" data-fullscreen="true">
@@ -54,6 +89,7 @@
 </html>
 <script type="text/javascript">
     $(function () {
+
         getData();
         setInterval("getData()", "10000");//每十秒执行一次
 
@@ -64,7 +100,7 @@
         var token_type = sessionStorage.getItem("token_type");
         var access_token = sessionStorage.getItem("access_token");
         $.ajax({
-            url: serviceUrl + '/api/combinedWell',
+            url: serviceUrl + '/api/pumpRoomSecond',
             dataType: 'json',
             type: 'GET',
             data: {
@@ -187,6 +223,7 @@
                     alert("数据异常：" + InfMoniter);
                 }
 
+
                 $('#phIn').html(data.phIn);
                 $('#waterTemperIn').html(data.waterTemperIn);
                 $("#turbidityIn").html(data.turbidityIn);
@@ -201,6 +238,43 @@
                 $('#codOut').html(data.codOut);
                 $('#tocOut').html(data.tocOut);
                 $('#flowOut').html(data.flowOut);
+                // $('#bp3_pv').html(data.pumps[3].frequency + 'HZ');
+                for (var i = 0; i < data.pumps.length; i++) {
+                    if (data.pumps[i].order == '1') {
+                        $('#bp1_pv').html(data.pumps[i].frequency);
+                        $('#bp1_yc').html(data.pumps[i].head);
+                        $('#bp1_ll').html(data.pumps[i].flow);
+                    }
+                    else if (data.pumps[i].order == '2') {
+                        $('#bp2_pv').html(data.pumps[i].frequency);
+                        $('#bp2_yc').html(data.pumps[i].head);
+                        $('#bp2_ll').html(data.pumps[i].flow);
+                    }
+                    else if (data.pumps[i].order == '3') {
+                        $('#bp3_pv').html(data.pumps[i].frequency);
+                        $('#bp3_yc').html(data.pumps[i].head);
+                        $('#bp3_ll').html(data.pumps[i].flow);
+                    }
+                    else if (data.pumps[i].order == '4') {
+                        $('#bp4_pv').html(data.pumps[i].frequency);
+                        $('#bp4_yc').html(data.pumps[i].head);
+                        $('#bp4_ll').html(data.pumps[i].flow);
+                    }
+                    else if (data.pumps[i].order == '5') {
+                        $('#bp5_pv').html(data.pumps[i].frequency);
+                        $('#bp5_yc').html(data.pumps[i].head);
+                        $('#bp5_ll').html(data.pumps[i].flow);
+                    }
+                    else if (data.pumps[i].order == '6') {
+                        $('#bp6_pv').html(data.pumps[i].frequency);
+                        $('#bp6_yc').html(data.pumps[i].head);
+                        $('#bp6_ll').html(data.pumps[i].flow);
+                    }
+
+                    //就这样照着往下写。。。
+                }
+
+
             },
             error: function () {
                 alert('服务器断开链接！');
@@ -208,6 +282,8 @@
             }
         })
     }
+
+
     function reloadGetInwaterPage(){
         setTimeout("doThisReload()",100);
     }

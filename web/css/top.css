@@ -1,0 +1,40 @@
+﻿.top_1 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.top_2 {
+    position: absolute;
+    right: 80px;
+    top: 0px;
+}
+.top_2:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.top_3 {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+.top_3:hover {
+    cursor: pointer;
+    color: red;
+}
+.topBox {
+    width: 100px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.topBox li {
+    line-height: 2rem;
+    text-align: center;
+    height: 2rem;
+    width: 199px;
+    float: left;
+    margin-top: 2rem;
+    border-left: 1px solid #000000;
+    font-size: 1.2rem;
+}

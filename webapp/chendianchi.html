@@ -16,12 +16,12 @@
 <body>
     <div data-role="page" id="pageone">
         <div data-role="header" data-theme="b">
-            <h1>清水池</h1>
+            <h1>沉淀池</h1>
         </div>
 
         <div data-role="main" class="ui-content">
-            <a href="qingshuichiIn.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
-            <a href="qingshuichiOut.html" onclick="reloadGetInwaterPage();" class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
+            <a href="chendianchiIn.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（进水）</a>
+            <a href="chendianchiOut.html"  class="ui-btn ui-corner-all ui-mini ui-shadow ui-btn-inline"data-ajax="false">历史数据（出水）</a>
             <h1>实时数据</h1>
             <h2>进水指标</h2>
             <ul data-role="listview" data-inset="true">
@@ -43,12 +43,6 @@
                 <li data-icon="tag"><a href="#">TOC：（mg/L）<span class="ui-li-count" id="tocOut"></span></a></li>
                 <li data-icon="tag"><a href="#">出水流量：（m3/h）<span class="ui-li-count" id="flowOut"></span></a></li>
             </ul>
-            <h2>氯投加量</h2>
-            <ul data-role="listview" data-inset="true">
-                <li data-icon="tag"><a href="#">氯投加量：<span class="ui-li-count" id="chlorineAmount"></span></a></li>
-                >
-            </ul>
-
 
         </div>
 
@@ -70,7 +64,7 @@
         var token_type = sessionStorage.getItem("token_type");
         var access_token = sessionStorage.getItem("access_token");
         $.ajax({
-            url: serviceUrl + '/api/chlorineAddPool',
+            url: serviceUrl + '/api/depositPool',
             dataType: 'json',
             type: 'GET',
             data: {
@@ -207,7 +201,6 @@
                 $('#codOut').html(data.codOut);
                 $('#tocOut').html(data.tocOut);
                 $('#flowOut').html(data.flowOut);
-                $('#chlorineAmount').html(data.chlorineAmount);
             },
             error: function () {
                 alert('服务器断开链接！');
@@ -215,7 +208,8 @@
             }
         })
     }
-    function reloadGetInwaterPage(){
+
+    function reloadGetInwaterPage() {
         setTimeout("doThisReload()",100);
     }
     function doThisReload(){
